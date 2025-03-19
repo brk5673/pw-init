@@ -15,7 +15,11 @@ export default defineConfig({
   reporter: 'html',
   use: {
     trace: 'on-first-retry',
+    extraHTTPHeaders: {
+      "Authorization": `Token ${process.env.AUTH_TOKEN}`
+    }
   },
+  globalSetup: require.resolve('./global-setup.ts'),
 
   projects: [
     { 
@@ -29,6 +33,7 @@ export default defineConfig({
     },
     { 
       name: 'regression',
+      testIgnore: 'likeCounter.spec.ts',
       use: { ...devices['Desktop Chrome'], storageState: '.auth/user.json'},
       dependencies: ['setup'],
     },
@@ -38,5 +43,10 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'], storageState: '.auth/user.json'},
       dependencies: ['articleSetup'],
     },
+    { 
+      name: 'likeCounterGlobal',
+      testMatch: 'likeCounterGlobal.spec.ts',
+      use: { ...devices['Desktop Chrome'], storageState: '.auth/user.json'},
+    }
   ],
 });

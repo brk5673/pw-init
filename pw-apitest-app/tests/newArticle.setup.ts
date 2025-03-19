@@ -2,9 +2,6 @@ import { expect, test as setup } from '@playwright/test';
 
 setup('create new article', async({ request }) => {
   const articlePost = await request.post('https://conduit-api.bondaracademy.com/api/articles', {
-    // headers: {
-    //   'Authorization': `Token ${token}`
-    // },
     data: {
       'article': {
         'title': 'Test title jfc',
