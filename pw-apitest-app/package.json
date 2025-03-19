@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    
+    "likeCounter": "npx playwright test likeCounter.spec.ts"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +12,8 @@
   "devDependencies": {
     "@playwright/test": "^1.51.1",
     "@types/node": "^22.13.10"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
   }
 }
